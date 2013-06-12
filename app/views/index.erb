@@ -1,16 +1,10 @@
 <div class="container">
   <ol>
-  <% @all_posts.each do |post| %>
+  <% @posts.each do |post| %>
     <li>
-      <a href=<%=post.url%>>
-        <%= post.title %>
-      </a> <span class="post-url">(<%=post.url%>)</span>
-      <div class="post-user">
-        by <%= post.user.name %> <%= post.created_at %>
-        <a href="#"> <%= post.comments.count %> comments </a>
-      </div>
-
+      <%= erb :_post, layout: false, locals: { post: post } %>
     </li>
   <% end %>
   </ol>
 </div>
+

@@ -1,7 +1,13 @@
 get '/' do
-  @all_posts = Post.all  #order("created_at DESC LIMIT 50")
+  @posts = Post.order("created_at DESC LIMIT 50")
   # if user is logged in, pass in session id
   erb :index
+end
+
+
+get '/comments' do
+  @all_comments = Comment.order("created_at DESC LIMIT 50")
+  erb :comments
 end
 
 get '/submit' do
@@ -10,20 +16,25 @@ get '/submit' do
 end
 
 post '/submit' do
-  # grab information from post submit 
-  #  and pass to new post id page
-  redirect '/:post_id'
+  post = Post.create(params[:form])
+  post.user = User.find(2) #current_user
+  post.save
+  redirect "/posts/#{post.id}"
 end
 
 get '/posts/:post_id' do
-  # find post id and it's comments
-  erb :post
+  @post = Post.find_by_id(params[:post_id])
+  erb :individual_post
 end
 
 post '/posts/:post_id' do
-  # find post id and it's comments
-  # save comment to post
-  redirect '/posts/:post_id'
+  comment = Comment.create(params[:body])
+  post = Post.find_by_id(params[:post_id])
+  comment.user = current_user
+  post.comments << comment
+  comment.save
+  post.save
+  redirect "/posts/#{post.id}"
 end
 
 get '/users/:user_id' do
@@ -38,8 +49,9 @@ get '/login' do
 end
 
 post '/login' do
-  #create new session
-  #success: 
+  #success:
+  # user = User.find_by_name()
+  session[:user_id] = user.id
   redirect '/'
   #unsucces: 
   redirect '/login'
@@ -53,4 +65,9 @@ post '/create' do
   redirect "/users/#{user.id}"
   #unsucces: 
   redirect '/login'
+end
+
+get '/logout' do
+  #ends user session
+  redirect '/'
 end

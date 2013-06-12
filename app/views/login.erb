@@ -1,0 +1,23 @@
+<div class="container">
+
+  <h4>Login to your account</h4>
+  <form action='/login' method='post'>
+    <label for="name">Username</label>
+    <input type='text' name='form[:name]' required=true>
+    <label for="password">Password</label>
+    <input type='password' name='form[:password]' required=true>
+    <input type='submit'>
+  </form>
+
+  <h4>Create an account</h4>
+  <form action='/create' method='post'>
+    <label for="name">Username</label>
+    <input type='text' name='form[:name]' required=true>
+    <label for="email">Email</label>
+    <input type='text' name='form[:email]'>
+    <label for="password">Password</label>
+    <input type='password' name='form[:password]' required=true>
+    <input type='submit'>
+  </form>
+
+</div>

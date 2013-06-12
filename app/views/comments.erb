@@ -1,0 +1,8 @@
+<div class="container">
+
+  <% @all_comments.each do |comment| %>
+    <%= erb :_comment, layout: false, locals: { comment: comment } %>
+  <% end %>
+
+</div>
+

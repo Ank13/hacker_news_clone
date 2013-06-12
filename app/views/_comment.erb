@@ -1,0 +1,11 @@
+<div class="comment">
+  <div class="comment-head">
+    <span class="comment-user"><a href='/user/<%=comment.user.id%>'><%= comment.user.name %></a></span>
+    <span class="comment-time"><%= comment.created_at %></span>
+    <!-- LINKS TO SOLO COMMENT VIEW AND PARENT COMMENT -->
+    <span class="comment-time"><a href="/posts/<%= comment.post.id %>"><%= comment.post.title %></a></span>
+  </div>
+  <div class="comment-body">
+    <p><%= comment.body %></p>
+  </div>
+</div>

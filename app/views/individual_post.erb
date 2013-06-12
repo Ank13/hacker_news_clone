@@ -1,0 +1,23 @@
+<div class="container">
+  
+  <%= erb :_post, layout: false, locals: { post: @post } %>
+  <br><br>
+  <% if logged_in? %>
+    <div class="add-comment">
+      <form action="/posts/<%=@post.id %>" method='post'>
+        <textarea name='body'></textarea>
+        <input type='submit' value="add comment">
+      </form>
+    </div>
+  <% end %>
+
+  <br><br>
+  <% @post.comments.each do |comment| %>
+  <%= erb :_comment, layout: false, locals: { comment: comment } %>
+  <br><br>
+  <% end %>
+
+</div>
+
+
+

@@ -1,0 +1,14 @@
+<div class="post-header">
+  <a href=<%= post.url%>><%= post.title %></a>
+  <span class="post-url">(<%= post.url%>)</span>
+</div>
+
+<div class="post-details">
+  <span class="details">
+    by <a href="/users/<%=post.user.id%>">
+    <%= post.user.name %></a>
+    <%= post.created_at %>
+    <a href="/posts/<%= post.id %>"> <%= post.comments.count %> comments </a>
+  </span>
+</div>
+
