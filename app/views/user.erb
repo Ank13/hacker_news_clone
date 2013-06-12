@@ -1,0 +1,29 @@
+<div class="container">
+  
+  <% if current_user == @user %>
+    <form action="/users/<%= current_user.id %>" method='post'>
+      <h3>User: <%= current_user.name %></h3>
+      <h3>Created: <%= current_user.created_at %></h3>
+      <label for='form[about]'>About: </label>
+      <textarea name='form[about]'><%= current_user.about %></textarea>
+      <label for="form[email]">Email: </label>
+      <input type='text' name='form[email]' value="<%= current_user.email %>">
+      <input type='submit' value="update">
+    </form>
+  <% end %>
+
+  <% unless current_user == @user %>
+    <ul>
+      <li>User: <%= @user.name %></li>
+      <li>Created: <%= @user.created_at %></li>
+      <li>About: <%= @user.about %></li>
+      <li>Email: <%= @user.email %></li>
+    </ul>
+  <% end %>
+
+    <a href="/posts/users/<%= current_user.id %>">submissions</a>
+  <a href="/comments/users/<%= current_user.id %>">comments</a>
+
+
+
+</div>

@@ -1,5 +1,8 @@
 source :rubygems
 
+# encrypted passwords
+gem 'bcrypt-ruby'
+
 # PostgreSQL driver
 gem 'pg'
 

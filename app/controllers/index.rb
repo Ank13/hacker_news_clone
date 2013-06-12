@@ -1,6 +1,5 @@
 get '/' do
   @posts = Post.order("created_at DESC LIMIT 50")
-  # if user is logged in, pass in session id
   erb :index
 end
 
@@ -11,13 +10,12 @@ get '/comments' do
 end
 
 get '/submit' do
-  #submit the form
   erb :submit
 end
 
 post '/submit' do
   post = Post.create(params[:form])
-  post.user = User.find(2) #current_user
+  post.user = current_user
   post.save
   redirect "/posts/#{post.id}"
 end
@@ -28,7 +26,8 @@ get '/posts/:post_id' do
 end
 
 post '/posts/:post_id' do
-  comment = Comment.create(params[:body])
+  p params.inspect
+  comment = Comment.create(body: params[:body])
   post = Post.find_by_id(params[:post_id])
   comment.user = current_user
   post.comments << comment
@@ -38,36 +37,43 @@ post '/posts/:post_id' do
 end
 
 get '/users/:user_id' do
-  #if you're logged, display edit option
-  #if not logged in, see basic info  
+  @user = User.find(params[:user_id])
   erb :user
 end
 
+post '/users/:user_id' do
+  user = User.find(params[:user_id])
+  user.update_attributes(params[:form])
+  redirect "/users/#{user.id}"
+end
+
 get '/login' do
-  # erb with the forms
   erb :login
 end
 
 post '/login' do
-  #success:
-  # user = User.find_by_name()
-  session[:user_id] = user.id
-  redirect '/'
-  #unsucces: 
-  redirect '/login'
+  user = User.authenticate(params[:name], params[:password])
+  if user
+    session.clear
+    session[:user_id] = user.id
+    redirect '/'
+  else  
+    redirect '/login'
+  end
 end
 
 post '/create' do
-  #create new session
-  #create new user in DB
-  user_id = user.id
-  #success: 
-  redirect "/users/#{user.id}"
-  #unsucces: 
-  redirect '/login'
+  user = User.create(params[:form])
+  if user.valid?
+    session.clear
+    session[:user_id] = user.id
+    redirect "/users/#{user.id}"
+  else
+    redirect '/login'
+  end
 end
 
 get '/logout' do
-  #ends user session
+  session.clear
   redirect '/'
 end

@@ -14,11 +14,13 @@
       <li><a href="/comments">COMMENTS</a></li>
       <li><a href="/submit">SUBMIT</a></li>
       <% if logged_in? %>
-        <li id="logout-link"><a href='/logout'>LOGOUT</a></li>
+        <li><a href='/logout'>LOGOUT</a></li>
+        <li><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></li>
       <% end %>
       <% unless logged_in? %>
-        <li id="login-link"><a href='/login'>LOGIN</a></li>
+        <li><a href='/login'>LOGIN</a></li>
       <% end %>
+
     </ul>
   </div>
 
