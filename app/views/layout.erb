@@ -7,20 +7,19 @@
   <link rel="stylesheet" href="/css/application.css">
 
   <div id="hacker-header">
-      <a href="http://localhost:9393"><img src="/img/blues_brothers.jpg"></a>
-    </div>
+      <a id="logo" href="http://localhost:9393"><img src="/img/crymx1.gif"></a>
     <ul>
-      <li><a href="/">POSTS</a></li>
-      <li><a href="/comments">COMMENTS</a></li>
-      <li><a href="/submit">SUBMIT</a></li>
+      <li><strong><a href="http://localhost:9393">Hacker Blues</strong></a></li>
+      <li><a href="/">posts</a></li>
+      <li><a href="/comments">comments</a></li>
+      <li><a href="/submit">submit</a></li>
       <% if logged_in? %>
-        <li><a href='/logout'>LOGOUT</a></li>
-        <li><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></li>
+        <li class="log-in-head"><a href='/logout'>logout</a></li>
+        <li class="log-in-head"><a href="/users/<%= current_user.id %>"><%= current_user.name %></a></li>
       <% end %>
       <% unless logged_in? %>
-        <li><a href='/login'>LOGIN</a></li>
+        <li class="log-in-head"><a href='/login'>login</a></li>
       <% end %>
-
     </ul>
   </div>
 

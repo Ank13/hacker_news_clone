@@ -1,9 +1,110 @@
+html {
+  font-family: Verdana;
+  font-size: 13px;
+}
+
 .container {
   margin: 20px auto;
-  width: 600px;
+  width: 80%;
   padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  background-color:#F6F6EF;
 }
-th {
-  text-align: left;
+
+div#hacker-header {
+  padding: 0px 20px 0px 20px;
+  margin: 0 auto;
+  width: 80%;
+  background-color: #009BDD;
+  height: 20px;
+  position: relative;
+}
+
+div#hacker-header ul {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  display: inline;
+  position: absolute;
+  top: 0;
+}
+
+div#hacker-header ul li {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  display: inline;
+  line-height: 20px;
+}
+
+div#hacker-header ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 0 3px;
+}
+
+div#hacker-header ul li:nth-child(n+2) a:before {
+  content: "| ";
+}
+
+div.log-in-head {
+  display: inline-block;
+  line-height: 20px;
+}
+
+div.comment-head, div.post-details, span.post-url {
+  color: #9A9A9A;
+  font-size: 10px;
+  font-style: italic;
+}
+
+div.comment-head a, div.post-details a {
+  text-decoration: none;
+  color: #9A9A9A;
+}
+
+div.comment-head a:hover, div.post-details a:hover {
+  text-decoration: underline;
+  color: #9A9A9A;
+}
+
+div.post-header a {
+  text-decoration: none;
+  color: black;
+}
+
+span.vote-comment > a > img {
+  display: inline-block;
+}
+
+span.vote-post > a > img {
+  display: inline-block;
+}
+
+a#logo {
+  display:inline-block;
+  padding-right: 13px
+}
+
+a.arrow {
+  display: inline;
+}
+
+form.vote-form {
+  display: inline;
+}
+
+div.vote {
+  display: inline;
+}
+
+div.post-header {
+  display: inline-block;
+}
+
+div.post {
+  margin: 10px 0;
+}
+
+div.comment-head {
+  display: inline-block;
 }
