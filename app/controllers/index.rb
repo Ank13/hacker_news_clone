@@ -78,11 +78,19 @@ get '/logout' do
 end
 
 post '/postvote' do
-  PostVote.find_or_create_by_post_id(params[:form])
-  redirect '/'
+  this_vote = PostVote.find_or_create_by_post_id(params[:form])
+  if request.xhr?
+    erb :_post_js, layout: false, locals: { post: this_vote.post }
+  else
+    redirect '/'
+  end
 end
 
 post '/commentvote' do
-  CommentVote.find_or_create_by_comment_id(params[:form])
-  redirect '/'
+  this_vote = CommentVote.find_or_create_by_comment_id(params[:form])
+  if request.xhr?
+    erb :_comment_js, layout: false, locals: { comment: this_vote.comment }
+  else
+    redirect '/'
+  end
 end

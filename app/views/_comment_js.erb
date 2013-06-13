@@ -1,16 +1,4 @@
 <div class="comment">
-  <% if logged_in? %>
-    <div class="vote">
-      <form  class="vote-form" action="/postvote" method='post'>
-        <input type="hidden" name="form[user_id]" value=<%= current_user.id %>>
-        <input type="hidden" name="form[comment_id]"value=<%= comment.id %>>
-        <input type="submit" value="VOTE!">
-      </form>
-      <span class="vote-comment">
-        <a href="/"><img src="/img/grayarrow.gif"></a>
-      </span>
-    </div>
-  <% end %>
   
   <div class="comment-head">
     <span class="comment-user"><a href='/user/<%=comment.user.id%>'><%= comment.user.name %></a></span>
@@ -22,4 +10,3 @@
     <p><%= comment.body %></p>
   </div>
 </div>
-

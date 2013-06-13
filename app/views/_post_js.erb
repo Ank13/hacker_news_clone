@@ -1,16 +1,6 @@
 <div class="post">
-  <% if logged_in? %>
-    <div class="vote">
-      <form class="vote-form" action="/postvote" method='post'>
-        <input type="hidden" name="form[user_id]" value=<%= current_user.id %>>
-        <input type="hidden" name="form[post_id]" value=<%= post.id %>>
-        <input type="submit" value="VOTE!">
-      </form>
-      <span class="vote-post">
-        <a href="/"><img src="/img/grayarrow.gif"></a>
-      </span>
-    </div>
-  <% end %>
+
+  <br>
 
   <div class="post-header">
     <a href=<%= post.url%>><%= post.title %></a>
@@ -28,5 +18,3 @@
     </span>
   </div>
 </div>
-
-
