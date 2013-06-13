@@ -1,14 +1,28 @@
-<div class="post-header">
-  <a href=<%= post.url%>><%= post.title %></a>
-  <span class="post-url">(<%= post.url%>)</span>
+<div class="post">
+  <% if logged_in? %>
+    <div class="vote">
+      <form action="/postvote" method='post'>
+        <input type="hidden" name="form[user_id]" value=<%= current_user.id %>>
+        <input type="hidden" name="form[post_id]" value=<%= post.id %>>
+        <input type="submit" value="VOTE!">
+      </form>
+      <!-- <a href="/"><img src="/img/grayarrow.gif"></a> -->
+    </div>
+  <% end %>
+
+  <div class="post-header">
+    <a href=<%= post.url%>><%= post.title %></a>
+    <span class="post-url">(<%= post.url%>)</span>
+  </div>
+
+  <div class="post-details">
+    <span class="details">
+      <%= post.post_votes.count %> point by <a href="/users/<%=post.user.id%>">
+      <%= post.user.name %></a>
+      <%= post.created_at %>
+      <a href="/posts/<%= post.id %>"> <%= post.comments.count %> comments </a>
+    </span>
+  </div>
 </div>
 
-<div class="post-details">
-  <span class="details">
-    by <a href="/users/<%=post.user.id%>">
-    <%= post.user.name %></a>
-    <%= post.created_at %>
-    <a href="/posts/<%= post.id %>"> <%= post.comments.count %> comments </a>
-  </span>
-</div>
 

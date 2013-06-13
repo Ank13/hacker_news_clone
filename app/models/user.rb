@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
+  has_many :post_votes
+  has_many :comment_votes
+
   before_save :get_encrypted_password
   validates :name, uniqueness: true, presence: true
   validates :password, presence: true

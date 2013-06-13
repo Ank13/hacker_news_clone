@@ -26,7 +26,6 @@ get '/posts/:post_id' do
 end
 
 post '/posts/:post_id' do
-  p params.inspect
   comment = Comment.create(body: params[:body])
   post = Post.find_by_id(params[:post_id])
   comment.user = current_user
@@ -75,5 +74,15 @@ end
 
 get '/logout' do
   session.clear
+  redirect '/'
+end
+
+post '/postvote' do
+  PostVote.find_or_create_by_post_id(params[:form])
+  redirect '/'
+end
+
+post '/commentvote' do
+  CommentVote.find_or_create_by_comment_id(params[:form])
   redirect '/'
 end
