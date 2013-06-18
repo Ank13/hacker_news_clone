@@ -1,4 +1,5 @@
-source :rubygems
+# source :rubygems
+source 'https://rubygems.org'
 
 # encrypted passwords
 gem 'bcrypt-ruby'
@@ -19,8 +20,8 @@ gem 'activerecord'
 gem 'rake'
 
 gem 'shotgun'
+gem 'faker'
 
 group :test do
-  gem 'faker'
   gem 'rspec'
 end
