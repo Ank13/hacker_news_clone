@@ -20,9 +20,9 @@ gem 'activerecord'
 gem 'rake'
 
 gem 'faker'
+gem 'rspec'
 
 
 group :development, :test do
-	gem 'shotgun'
-	gem 'rspec'
+  gem 'shotgun'
 end
