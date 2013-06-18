@@ -10,7 +10,11 @@ get '/comments' do
 end
 
 get '/submit' do
-  erb :submit
+  if current_user 
+    erb :submit
+  else
+    redirect '/login'
+  end
 end
 
 post '/submit' do
